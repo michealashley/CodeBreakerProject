@@ -19,7 +19,7 @@ function guess() {
         setMessage("You Win! :)");
         showAnswer(true);
         showReplay();
-    } else if (!getResults(input.value) && attempt.value === 10) {
+    } else if (attempt.value === 10) {
         setMessage("You Lose! :(");
         showAnswer(false);
         showReplay();
@@ -52,6 +52,7 @@ function validateInput(enteredValue) {
 }
 
 function getResults(input) {
+    results = document.getElementById('results');
     resultMessage = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
     numberCorrect = 0;
     for (i = 0; i < input.length; i++) {
@@ -68,7 +69,7 @@ function getResults(input) {
             }
         }
     }
-    document.getElementById('results').innerHTML = resultMessage + '</div>';
+    results.innerHTML += resultMessage + '</div>';
     if (numberCorrect === answer.value.length) {
         return true;
     } else {
