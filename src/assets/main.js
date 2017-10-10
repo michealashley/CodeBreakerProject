@@ -15,11 +15,13 @@ function guess() {
         attempt.value = attempts.toString();
     }
 
-    if (getResults(input.value)) {
+    result = getResults(input.value);
+
+    if (result) {
         setMessage("You Win! :)");
         showAnswer(true);
         showReplay();
-    } else if (attempt.value == 10) {
+    } else if (!result && attempt.value == 10) {
         setMessage("You Lose! :(");
         showAnswer(false);
         showReplay();
